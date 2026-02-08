@@ -1,0 +1,131 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// User model for COE team members
+model User {
+  id           Int       @id @default(autoincrement())
+  username     String    @unique
+  displayName  String
+  password     String
+  avatarUrl    String?
+  status       String    @default("offline") // online, offline, away
+  role         String    @default("member")  // admin, member
+  createdAt    DateTime  @default(now())
+  
+  // Relations
+  messages         Message[]
+  channelMembers   ChannelMember[]
+  createdChannels  Channel[]        @relation("ChannelCreator")
+  directMessagesSent     DirectMessage[]  @relation("DMSender")
+  directMessagesReceived DirectMessage[]  @relation("DMRecipient")
+  reactions        Reaction[]
+}
+
+// Channel model for group conversations
+model Channel {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  description String?
+  isPrivate   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  
+  // Creator relation
+  createdById Int
+  createdBy   User      @relation("ChannelCreator", fields: [createdById], references: [id])
+  
+  // Relations
+  messages    Message[]
+  members     ChannelMember[]
+}
+
+// Channel membership
+model ChannelMember {
+  id        Int      @id @default(autoincrement())
+  joinedAt  DateTime @default(now())
+  
+  channelId Int
+  channel   Channel  @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([channelId, userId])
+}
+
+// Channel messages
+model Message {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  
+  senderId  Int
+  sender    User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  
+  channelId Int
+  channel   Channel  @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  
+  // Relations
+  attachments Attachment[]
+  reactions   Reaction[]
+}
+
+// Direct messages between users
+model DirectMessage {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  isRead    Boolean  @default(false)
+  
+  senderId    Int
+  sender      User   @relation("DMSender", fields: [senderId], references: [id], onDelete: Cascade)
+  
+  recipientId Int
+  recipient   User   @relation("DMRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  
+  // Relations
+  attachments Attachment[]
+  reactions   Reaction[]
+}
+
+// File attachments
+model Attachment {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  fileUrl   String
+  fileType  String
+  fileSize  Int
+  createdAt DateTime @default(now())
+  
+  messageId Int?
+  message   Message? @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  
+  dmId      Int?
+  dm        DirectMessage? @relation(fields: [dmId], references: [id], onDelete: Cascade)
+}
+
+// Message reactions
+model Reaction {
+  id        Int      @id @default(autoincrement())
+  emoji     String
+  createdAt DateTime @default(now())
+  
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  messageId Int?
+  message   Message? @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  
+  dmId      Int?
+  dm        DirectMessage? @relation(fields: [dmId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, messageId, emoji])
+}

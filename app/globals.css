@@ -1,0 +1,371 @@
+/* ========================================
+   COE MESSENGER - NOIR LUXE DESIGN SYSTEM
+   Ultra-polished, Premium Dark Luxury
+======================================== */
+
+/* Dark theme (Noir Luxe - Default) */
+:root,
+[data-theme="dark"] {
+  /* Ultra-black luxury palette */
+  --bg-primary: #0B0B0C;
+  --bg-secondary: #111112;
+  --bg-tertiary: #1E1E1F;
+  --bg-hover: #2A2A2B;
+  --bg-active: #3A3A3C;
+  --bg-glass: rgba(17, 17, 18, 0.92);
+  --bg-card: rgba(30, 30, 31, 0.6);
+
+  /* Metallic accents */
+  --accent-gold: #C9A34B;
+  --accent-gold-light: #D4B76A;
+  --accent-gold-glow: rgba(201, 163, 75, 0.3);
+  --accent-silver: #BFC6CC;
+  --accent-silver-light: #D4D9DD;
+  --accent-primary: #C9A34B;
+  --accent-hover: #D4B76A;
+  --accent-gradient: linear-gradient(135deg, #C9A34B, #D4B76A, #E8CE8F);
+  --accent-metallic: linear-gradient(135deg, #BFC6CC, #D4D9DD, #E8EBED);
+
+  /* Status colors - muted luxury */
+  --accent-success: #5B8A72;
+  --accent-warning: #C9A34B;
+  --accent-danger: #A65454;
+
+  /* Text colors - accessible contrast */
+  --text-primary: #F5F5F5;
+  --text-secondary: #A8A8AA;
+  --text-muted: #6E6E70;
+  --text-link: #C9A34B;
+
+  /* Metallic border colors */
+  --border-primary: rgba(191, 198, 204, 0.12);
+  --border-secondary: rgba(201, 163, 75, 0.08);
+  --border-metallic: linear-gradient(90deg, transparent, rgba(191, 198, 204, 0.3), transparent);
+  --border-glow: rgba(201, 163, 75, 0.4);
+
+  /* Status */
+  --status-online: #5B8A72;
+  --status-away: #C9A34B;
+  --status-offline: #4A4A4C;
+
+  /* Premium shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-inner-glow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  --shadow-gold-glow: 0 0 20px rgba(201, 163, 75, 0.25);
+
+  /* Card styling */
+  --message-bg: rgba(30, 30, 31, 0.5);
+  --message-own-bg: rgba(201, 163, 75, 0.08);
+
+  /* Input */
+  --input-bg: rgba(30, 30, 31, 0.7);
+  --input-border: rgba(191, 198, 204, 0.15);
+}
+
+/* Light theme - Platinum Luxe variant */
+[data-theme="light"] {
+  /* Warm platinum palette */
+  --bg-primary: #F8F7F5;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #EFEEE9;
+  --bg-hover: #E5E4DF;
+  --bg-active: #D8D7D2;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  --bg-card: rgba(239, 238, 233, 0.7);
+
+  /* Metallic accents - richer for light */
+  --accent-gold: #9A7832;
+  --accent-gold-light: #B8923D;
+  --accent-gold-glow: rgba(154, 120, 50, 0.2);
+  --accent-silver: #6B7075;
+  --accent-silver-light: #858A8F;
+  --accent-primary: #9A7832;
+  --accent-hover: #B8923D;
+  --accent-gradient: linear-gradient(135deg, #9A7832, #B8923D, #C9A34B);
+  --accent-metallic: linear-gradient(135deg, #6B7075, #858A8F, #9A9EA3);
+
+  /* Status colors */
+  --accent-success: #3D6B54;
+  --accent-warning: #9A7832;
+  --accent-danger: #8B4343;
+
+  /* Text colors - strong contrast */
+  --text-primary: #1A1A1B;
+  --text-secondary: #4A4A4C;
+  --text-muted: #7A7A7C;
+  --text-link: #9A7832;
+
+  /* Border colors */
+  --border-primary: rgba(107, 112, 117, 0.15);
+  --border-secondary: rgba(154, 120, 50, 0.1);
+  --border-metallic: linear-gradient(90deg, transparent, rgba(107, 112, 117, 0.25), transparent);
+  --border-glow: rgba(154, 120, 50, 0.3);
+
+  /* Status */
+  --status-online: #3D6B54;
+  --status-away: #9A7832;
+  --status-offline: #9A9A9C;
+
+  /* Premium shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.14);
+  --shadow-inner-glow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  --shadow-gold-glow: 0 0 20px rgba(154, 120, 50, 0.15);
+
+  /* Card styling */
+  --message-bg: rgba(239, 238, 233, 0.6);
+  --message-own-bg: rgba(154, 120, 50, 0.08);
+
+  /* Input */
+  --input-bg: #FFFFFF;
+  --input-border: rgba(107, 112, 117, 0.2);
+}
+
+:root {
+  /* Spacing */
+  --sidebar-width: 280px;
+  --header-height: 64px;
+
+  /* GT America / Inter Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+
+  /* Border radius - refined */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Silky smooth transitions (200-300ms) */
+  --transition-fast: 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-normal: 280ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-slow: 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ========================================
+   BASE STYLES
+======================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--transition-normal), color var(--transition-normal);
+  letter-spacing: -0.01em;
+}
+
+/* Subtle texture overlay for dark theme */
+[data-theme="dark"] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(201, 163, 75, 0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 100%, rgba(191, 198, 204, 0.015) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-silver);
+}
+
+/* ========================================
+   THEME TOGGLE - MINIMAL LUXURY
+======================================== */
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: 1px solid var(--border-primary);
+}
+
+.themeToggle:hover {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  border-color: transparent;
+  box-shadow: var(--shadow-gold-glow);
+}
+
+.themeToggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ========================================
+   SHIMMER ANIMATION FOR UNREAD
+======================================== */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg,
+      var(--accent-gold) 0%,
+      var(--accent-gold-light) 25%,
+      #E8CE8F 50%,
+      var(--accent-gold-light) 75%,
+      var(--accent-gold) 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ========================================
+   UTILITY CLASSES
+======================================== */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 4px;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-3 {
+  gap: 12px;
+}
+
+.gap-4 {
+  gap: 16px;
+}
+
+.text-sm {
+  font-size: 13px;
+}
+
+.text-base {
+  font-size: 15px;
+}
+
+.text-lg {
+  font-size: 18px;
+}
+
+.text-xl {
+  font-size: 22px;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Gold gradient text */
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hide Next.js dev indicator */
+nextjs-portal {
+  display: none !important;
+}
